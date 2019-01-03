@@ -9,16 +9,30 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      input: ''
+      input: '',
+      isOperatorChosen: false
     }
   }
-  addToInput = (val) => (
-    this.setState({input:this.state.input + val})
-  )
+  
+  addToInput = val => {
+    if (isNaN(val) && isNaN(this.state.input[this.state.input.length-1])){
+     this.setState({input: this.state.input}); 
+        }
+       else {
+     this.setState({input: this.state.input + val});
+     }
+    }
 
-  handleEqual =()=> (
-    this.setState({input: math.eval(this.state.input)})
-  )
+  
+  handleEqual = () => {
+    if (isNaN(this.state.input[this.state.input.length-1])) {
+    this.setState({input: this.state.input});     
+    }
+    else {
+    this.setState({input: math.eval(this.state.input)});
+    }
+   }
+
   render() {
     return (
       <div className="app">
@@ -34,7 +48,7 @@ class App extends Component {
             <Button handleClick={this.addToInput}>4</Button>
             <Button handleClick={this.addToInput}>5</Button>
             <Button handleClick={this.addToInput}>6</Button>
-            <Button handleClick={this.addToInput}>x</Button>
+            <Button handleClick={this.addToInput}>*</Button>
           </div>
           <div className="row">
             <Button handleClick={this.addToInput}>1</Button>
