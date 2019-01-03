@@ -15,6 +15,9 @@ class App extends Component {
   }
   
   addToInput = val => {
+    if (val === 'x') {
+        val = "*";  
+       }
     if (isNaN(val) && isNaN(this.state.input[this.state.input.length-1])){
      this.setState({input: this.state.input}); 
         }
@@ -48,7 +51,7 @@ class App extends Component {
             <Button handleClick={this.addToInput}>4</Button>
             <Button handleClick={this.addToInput}>5</Button>
             <Button handleClick={this.addToInput}>6</Button>
-            <Button handleClick={this.addToInput}>*</Button>
+            <Button handleClick={this.addToInput}>x</Button>
           </div>
           <div className="row">
             <Button handleClick={this.addToInput}>1</Button>
